@@ -24,5 +24,5 @@ app.use(transaction_routes_1.default);
 // app.use(index);
 // app.use('/api/', productRoute);
 const port = 3001 | process.env.PORT;
-app.listen(3001, () => console.log('caraleo'));
+app.listen(port, () => console.log(`server burning on port: ${port} 🔥🔥`));
 exports.default = app;
