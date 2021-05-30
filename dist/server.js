@@ -16,7 +16,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
 app.use(express_1.default.json({ type: 'application/vnd.api+json' }));
 app.use((request, response, next) => {
-    response.header("Access-Control-Allow-Origin", "https://finance-app1-9zfu811sj-peacelo.vercel.app/");
+    response.header("Access-Control-Allow-Origin", "https://finance-app1-9zfu811sj-peacelo.vercel.app");
     response.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
     app.use(cors_1.default());
     next();
