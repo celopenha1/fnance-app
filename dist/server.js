@@ -16,7 +16,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
 app.use(express_1.default.json({ type: 'application/vnd.api+json' }));
 app.use(cors_1.default({
-    origin: "*"
+    origin: "https://finance-app1.vercel.app/"
 }));
 // use routes
 app.use(index_1.default);
