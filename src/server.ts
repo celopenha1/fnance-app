@@ -23,7 +23,7 @@ app.use(transactionRouter);
 // app.use(index);
 // app.use('/api/', productRoute);
 
-app.listen(3001, () => console.log('caraleo'))
+app.listen(process.env.PORT || 3001, () => console.log('caraleo'))
 
 
 export default app;

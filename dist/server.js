@@ -1,6 +1,6 @@
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { "default": mod };
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
@@ -16,13 +16,12 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
 app.use(express_1.default.json({ type: 'application/vnd.api+json' }));
 app.use(cors_1.default({
-  origin: "*"
+    origin: "*"
 }));
 // use routes
 app.use(index_1.default);
 app.use(transaction_routes_1.default);
 // app.use(index);
 // app.use('/api/', productRoute);
-const port = process.env.PORT | 3001;
-app.listen(port, () => console.log(`server burning on port: ${port} 🔥🔥`));
+app.listen(process.env.PORT || 3001, () => console.log('caraleo'));
 exports.default = app;
