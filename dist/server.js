@@ -23,6 +23,6 @@ app.use(index_1.default);
 app.use(transaction_routes_1.default);
 // app.use(index);
 // app.use('/api/', productRoute);
-const port = 3001 | process.env.PORT;
+const port = process.env.PORT | 3001;
 app.listen(port, () => console.log(`server burning on port: ${port} 🔥🔥`));
 exports.default = app;
