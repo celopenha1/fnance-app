@@ -17,12 +17,17 @@ app.use(express.json());
 app.use(express.json({ type: 'application/vnd.api+json' }));
 
 
-app.use((request: Request, response: Response, next) => {
-  response.header("Access-Control-Allow-Origin", "https://finance-app1-9zfu811sj-peacelo.vercel.app");
-  response.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-  app.use(cors());
-  next();
-});
+const setupCors = {
+  origin: [
+    "https://finance-app1-9zfu811sj-peacelo.vercel.app",
+    "https://finance-app1.vercel.app"
+  ],
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(setupCors));
+
+
 // use routes
 app.use(indexRouter);
 app.use(transactionRouter);
