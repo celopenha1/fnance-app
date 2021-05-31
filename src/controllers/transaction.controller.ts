@@ -6,23 +6,12 @@ import db from '../config/database';
 class Transaction {
   static async create(request: Request, response: Response) {
     // BUILD QUERY STRING TO INSERT A NEW TRANSACTION ON TABLE!
-    const queryString = "INSERT INTO transacao (value, relevant) VALUES ($1, $2)";
-    // GET VALUES FROM FORM
-    const { value, relevant } = request.body;
-    //  this is how pg queries works on node!!!!
-    // const result = await db.query(queryString, [value, relevant]);
-    // // VERIFY IS THE RESULT IS OK !!!
+    const queryString = "INSERT INTO transacao (title, value) VALUES ($1, $2)";
 
+    console.log(request.body);
+    const { value, title } = request.body;
 
-    // try {
-    //   const result = await db.query(queryString, [value, relevant]);
-    //   result.rowCount
-    //     ? response.status(201).json({ message: `Valor R$ ${value} adicionado com sucesso!` })
-    //     : response.status(500).json({ message: `Não foi possível adicionar o valor, tente novamente mais tarde!` })
-    // } catch (error) {
-    //   response.status(201).send(error)
-    // }
-    db.query(queryString, [value, relevant]).then(result => {
+    db.query(queryString, [title, value]).then(result => {
       response.status(201).json(result)
     }).catch(error => {
       response.send(error)
