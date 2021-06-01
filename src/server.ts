@@ -7,15 +7,10 @@ import transactionRouter from './routes/transaction.routes';
 import { Request, Response } from 'express';
 
 const app = express();
-
 // ==> Rotas da API:
-const index = require('./routes/index');
-// const productRoute = require('./routes/product.routes');
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.json({ type: 'application/vnd.api+json' }));
-
 
 const setupCors = {
   origin: [
@@ -25,14 +20,11 @@ const setupCors = {
   optionsSuccessStatus: 200
 }
 
-app.use(cors(setupCors));
-
-
-// use routes
+app.use(cors());
+// import routes
 app.use(indexRouter);
 app.use(transactionRouter);
-// app.use(index);
-// app.use('/api/', productRoute);
+
 
 app.listen(process.env.PORT || 3001, () => console.log('caraleo'))
 
