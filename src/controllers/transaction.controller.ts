@@ -1,4 +1,4 @@
-import { query, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import db from '../config/database';
 import DateUtil from '../util/Date';
 class Transaction {
@@ -20,22 +20,26 @@ class Transaction {
 
     const queryString = "SELECT * FROM transacao ORDER BY create_at DESC";
 
-    const result = await db.query(queryString, []);
 
-    const transacoes = result.rows.map(transacao => {
-      return {
-        id: transacao.id,
-        title: transacao.title,
-        date: DateUtil.parseDate(transacao.create_at),
-        value: transacao.value
-      }
-    })
+    try{
+      const result = await db.query(queryString, []);
 
-
-    result.rowCount
-      ? response.status(200).json(transacoes)
-      : response.status(500).json({ error: "cannot get transactions" })
-
+      const transacoes = result.rows.map(transacao => {
+        return {
+          id: transacao.id,
+          title: transacao.title,
+          date: DateUtil.parseDate(transacao.create_at),
+          value: transacao.value
+        }
+      })
+  
+  
+      result.rowCount
+        ? response.status(200).json(transacoes)
+        : response.status(500).json({ error: "cannot get transactions" })
+    }catch(e){
+      console.log(e)
+    }
   }
 }
 
