@@ -31,6 +31,7 @@ const setupCors = {
     optionsSuccessStatus: 200
 };
 app.use(cors_1.default());
+
 // import routes
 app.use(index_1.default);
 
