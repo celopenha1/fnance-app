@@ -33,6 +33,7 @@ const setupCors = {
 app.use(cors_1.default());
 // import routes
 app.use(index_1.default);
+
 app.use(transaction_routes_1.default);
 app.listen(process.env.PORT || 3001, () => console.log('caraleo'));
 exports.default = app;
