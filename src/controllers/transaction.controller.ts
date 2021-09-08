@@ -18,22 +18,20 @@ class Transaction {
 
   static async get(request: Request, response: Response) {
 
-    const queryString = "SELECT * FROM transacao ORDER BY create_at DESC";
-
-
+    const queryString = "SELECT * FROM public.transacao ORDER BY created_at DESC";
     try{
       const result = await db.query(queryString, []);
 
       const transacoes = result.rows.map(transacao => {
         return {
-          id: transacao.id,
-          title: transacao.title,
-          date: DateUtil.parseDate(transacao.create_at),
-          value: transacao.value
+          titulo: transacao.titulo,
+          contaId: transacao.conta_id,
+          categoria: transacao.categoria,
+          tipo:transacao.tipo,
+          data: DateUtil.parseDate(transacao.created_at),
+          valor: transacao.valor
         }
       })
-  
-  
       result.rowCount
         ? response.status(200).json(transacoes)
         : response.status(500).json({ error: "cannot get transactions" })
